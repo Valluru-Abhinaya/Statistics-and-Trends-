@@ -68,6 +68,7 @@ def preprocessing(df):
         print(numeric_df.corr())    
     return df
 
+
 def writing(moments, col):
     """print stastical details in a formatted manner"""
     print(f'For the attribute {col}:')
@@ -86,6 +87,7 @@ def writing(moments, col):
     )
     
     print(f'The data was {skew_desc} and {kurt_desc}.')
+
 
 def main():
     """ Main function to process the dataset"""
