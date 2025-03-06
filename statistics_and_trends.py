@@ -63,7 +63,7 @@ def preprocessing(df):
     print("Correlation Matrix:")
     numeric_df = df.select_dtypes(include=[np.number])
     if not numeric_df.empty:
-        print((numeric_df.corr()).rstrip())    
+        print((numeric_df.corr()).rstrip())   
     return df
 
 
