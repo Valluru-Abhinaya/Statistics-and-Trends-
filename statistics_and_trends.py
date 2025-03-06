@@ -24,13 +24,9 @@ def plot_categorical_plot(df):
     numeric_cols = df.select_dtypes(include=[np.number]).columns
     if len(categorical_cols) > 0 and len(numeric_cols) > 0:
         plt.figure(figsize=(10, 6))
-        sns.barplot(
-            data=df, x=categorical_cols[0], y=numeric_cols[0]
-        )
+        sns.barplot(data=df, x=categorical_cols[0], y=numeric_cols[0])
         plt.xticks(rotation=90)
-        plt.title(
-            f'Categorical Plot: {categorical_cols[0]} vs {numeric_cols[0]}'
-        )
+        plt.title(f"Categorical Plot: {categorical_cols[0]} vs {numeric_cols[0]}")
         plt.savefig('categorical_plot.png')
         plt.show()
 
