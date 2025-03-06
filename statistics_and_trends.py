@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import scipy.stats as ss
 
 def plot_relational_plot(df):
+    """ Create a barplot """
     numeric_cols = df.select_dtypes(include=[np.number]).columns
     if len(numeric_cols) >= 2:
         plt.figure(figsize=(10, 6))
