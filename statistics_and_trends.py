@@ -30,7 +30,9 @@ def plot_categorical_plot(df):
             y=numeric_cols[0]
         )
         plt.xticks(rotation=90)
-        plt.title(f'Categorical Plot: {categorical_cols[0]} vs {numeric_cols[0]}')
+        plt.title(
+            f'Categorical Plot: {categorical_cols[0]} vs {numeric_cols[0]}'
+        )
         plt.savefig('categorical_plot.png')
         plt.show()
 
