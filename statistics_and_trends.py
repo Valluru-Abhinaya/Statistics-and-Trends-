@@ -53,7 +53,6 @@ def statistical_analysis(df, col):
     stddev = df[col].std()
     skew = ss.skew(df[col].dropna())
     excess_kurtosis = ss.kurtosis(df[col].dropna())
-    
     return mean, stddev, skew, excess_kurtosis
 
 
@@ -67,8 +66,7 @@ def preprocessing(df):
     print("Correlation Matrix:")
     numeric_df = df.select_dtypes(include=[np.number])
     if not numeric_df.empty:
-        print(numeric_df.corr())
-        
+        print(numeric_df.corr())    
     return df
 
 
