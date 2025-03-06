@@ -10,7 +10,7 @@ def plot_relational_plot(df):
     numeric_cols = df.select_dtypes(include=[np.number]).columns
     if len(numeric_cols) >= 2:
         plt.figure(figsize=(10, 6))
-        sns.barplot(df[numeric_cols])
+        sns.barplot(data=df[numeric_cols])
         plt.suptitle('Relational Plot for Numeric Columns', y=1.02)
         plt.savefig('relational_plot.png')
         plt.show()
@@ -25,7 +25,9 @@ def plot_categorical_plot(df):
     if len(categorical_cols) > 0 and len(numeric_cols) > 0:
         plt.figure(figsize=(10, 6))
         sns.barplot(
-            data=df, x=categorical_cols[0], y=numeric_cols[0]
+            data=df, 
+            x=categorical_cols[0], 
+            y=numeric_cols[0]
         )
         plt.xticks(rotation=90)
         plt.title(f'Categorical Plot: {categorical_cols[0]} vs {numeric_cols[0]}')
