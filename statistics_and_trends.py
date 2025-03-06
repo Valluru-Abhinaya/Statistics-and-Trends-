@@ -4,6 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import scipy.stats as ss
 
+
 def plot_relational_plot(df):
     """ Create a barplot """
     numeric_cols = df.select_dtypes(include=[np.number]).columns
@@ -16,18 +17,24 @@ def plot_relational_plot(df):
     else:
         print("Not enough numeric columns to plot relational graph.")
 
+
 def plot_categorical_plot(df):
+    """ create a categirical plot"""
     categorical_cols = df.select_dtypes(include=['object']).columns
     numeric_cols = df.select_dtypes(include=[np.number]).columns
     if len(categorical_cols) > 0 and len(numeric_cols) > 0:
         plt.figure(figsize=(10, 6))
-        sns.barplot(data=df, x=categorical_cols[0], y=numeric_cols[0])
+        sns.barplot(
+            data=df, x=categorical_cols[0], y=numeric_cols[0]
+        )
         plt.xticks(rotation=90)
         plt.title(f'Categorical Plot: {categorical_cols[0]} vs {numeric_cols[0]}')
         plt.savefig('categorical_plot.png')
         plt.show()
 
+
 def plot_statistical_plot(df):
+    """ Create a statisical plot """
     numeric_cols = df.select_dtypes(include=[np.number]).columns
     if len(numeric_cols) > 0:
         plt.figure(figsize=(10, 6))
@@ -37,25 +44,34 @@ def plot_statistical_plot(df):
         plt.savefig('statistical_plot.png')
         plt.show()
 
+
 def statistical_analysis(df, col):
+    """perform statistical analysis on a column """
     mean = df[col].mean()
     stddev = df[col].std()
     skew = ss.skew(df[col].dropna())
     excess_kurtosis = ss.kurtosis(df[col].dropna())
+    
     return mean, stddev, skew, excess_kurtosis
 
+
 def preprocessing(df):
+    """ preprocess and analyze dataset """
     print("Dataset Overview:")
     print(df.info())
     print(df.describe(include='all'))
     print(df.head())
+    
     print("Correlation Matrix:")
     numeric_df = df.select_dtypes(include=[np.number])
     if not numeric_df.empty:
         print(numeric_df.corr())
+        
     return df
 
+
 def writing(moments, col):
+    """print stastical details in a formatted manner"""
     print(f'For the attribute {col}:')
     print(f'Mean = {moments[0]:.2f}, '
           f'Standard Deviation = {moments[1]:.2f}, '
