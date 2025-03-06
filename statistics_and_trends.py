@@ -75,8 +75,7 @@ def writing(moments, col):
         f'Standard Deviation = {moments[1]:.2f}, '
         f'Skewness = {moments[2]:.2f}, and '
         f'Excess Kurtosis = {moments[3]:.2f}.'
-    )
-         
+    )    
     skew_desc = "not skewed" if abs(moments[2]) < 2 else (
         "right skewed" if moments[2] > 0 else "left skewed"
     )
