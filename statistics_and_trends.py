@@ -77,9 +77,9 @@ def writing(moments, col):
     print(f'For the attribute {col}:')
     print(
         f'Mean = {moments[0]:.2f}, '
-          f'Standard Deviation = {moments[1]:.2f}, '
-          f'Skewness = {moments[2]:.2f}, and '
-          f'Excess Kurtosis = {moments[3]:.2f}.'
+        f'Standard Deviation = {moments[1]:.2f}, '
+        f'Skewness = {moments[2]:.2f}, and '
+        f'Excess Kurtosis = {moments[3]:.2f}.'
     )
          
     skew_desc = "not skewed" if abs(moments[2]) < 2 else (
