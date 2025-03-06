@@ -62,13 +62,11 @@ def preprocessing(df):
     print(df.info())
     print(df.describe(include='all'))
     print(df.head())
-    
     print("Correlation Matrix:")
     numeric_df = df.select_dtypes(include=[np.number])
     if not numeric_df.empty:
         print(numeric_df.corr())    
     return df
-
 
 def writing(moments, col):
     """print stastical details in a formatted manner"""
@@ -89,7 +87,6 @@ def writing(moments, col):
     
     print(f'The data was {skew_desc} and {kurt_desc}.')
 
-
 def main():
     """ Main function to process the dataset"""
     df = pd.read_csv("data.csv")
@@ -97,12 +94,10 @@ def main():
     # Convert any numeric columns stored as strings to numeric values
     df = df.apply(pd.to_numeric, errors='ignore')
     df = preprocessing(df)
-    
     numeric_cols = df.select_dtypes(include=[np.number]).columns
     if numeric_cols.empty:
         print("No numerical columns found in the dataset.")
-        return
-    
+        return 
     plot_relational_plot(df)
     plot_statistical_plot(df)
     plot_categorical_plot(df)
