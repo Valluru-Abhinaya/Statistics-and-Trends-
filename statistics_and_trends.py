@@ -73,15 +73,25 @@ def preprocessing(df):
 def writing(moments, col):
     """print stastical details in a formatted manner"""
     print(f'For the attribute {col}:')
-    print(f'Mean = {moments[0]:.2f}, '
+    print(
+        f'Mean = {moments[0]:.2f}, '
           f'Standard Deviation = {moments[1]:.2f}, '
           f'Skewness = {moments[2]:.2f}, and '
-          f'Excess Kurtosis = {moments[3]:.2f}.')
-    skew_desc = "not skewed" if abs(moments[2]) < 2 else ("right skewed" if moments[2] > 0 else "left skewed")
-    kurt_desc = "mesokurtic" if abs(moments[3]) < 2 else ("leptokurtic" if moments[3] > 0 else "platykurtic")
+          f'Excess Kurtosis = {moments[3]:.2f}.'
+    )
+         
+    skew_desc = "not skewed" if abs(moments[2]) < 2 else (
+        "right skewed" if moments[2] > 0 else "left skewed"
+    )
+    kurt_desc = "mesokurtic" if abs(moments[3]) < 2 else (
+        "leptokurtic" if moments[3] > 0 else "platykurtic"
+    )
+    
     print(f'The data was {skew_desc} and {kurt_desc}.')
 
+
 def main():
+    """ Main function to process the dataset"""
     df = pd.read_csv("data.csv")
     
     # Convert any numeric columns stored as strings to numeric values
@@ -94,14 +104,13 @@ def main():
         return
     
     plot_relational_plot(df)
-    
     plot_statistical_plot(df)
-    
     plot_categorical_plot(df)
     
     for col in numeric_cols:
         moments = statistical_analysis(df, col)
         writing(moments, col)
+
 
 if __name__ == '__main__':
     main()
