@@ -25,9 +25,7 @@ def plot_categorical_plot(df):
     if len(categorical_cols) > 0 and len(numeric_cols) > 0:
         plt.figure(figsize=(10, 6))
         sns.barplot(
-            data=df, 
-            x=categorical_cols[0], 
-            y=numeric_cols[0]
+            data=df, x=categorical_cols[0], y=numeric_cols[0]
         )
         plt.xticks(rotation=90)
         plt.title(
